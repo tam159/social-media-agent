@@ -2,7 +2,7 @@ import { z } from "zod";
 import { LangGraphRunnableConfig } from "@langchain/langgraph";
 import { GeneratePostAnnotation } from "../../generate-post/generate-post-state.js";
 import { ChatVertexAI } from "@langchain/google-vertexai-web";
-import { ChatAnthropic } from "@langchain/anthropic";
+import { ChatOpenAI} from "@langchain/openai";
 import { HumanMessage } from "@langchain/core/messages";
 import { getPrompts } from "../../generate-post/prompts/index.js";
 import { VerifyContentAnnotation } from "../shared-state.js";
@@ -89,8 +89,8 @@ export async function generateVideoSummary(url: string): Promise<string> {
 export async function verifyYouTubeContentIsRelevant(
   summary: string,
 ): Promise<boolean> {
-  const relevancyModel = new ChatAnthropic({
-    model: "claude-3-5-sonnet-20241022",
+  const relevancyModel = new ChatOpenAI({
+    model: "gpt-4o",
     temperature: 0,
   }).withStructuredOutput(RELEVANCY_SCHEMA, {
     name: "relevancy",

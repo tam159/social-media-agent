@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { LangGraphRunnableConfig } from "@langchain/langgraph";
-import { ChatAnthropic } from "@langchain/anthropic";
+import { ChatOpenAI} from "@langchain/openai";
 import { getPrompts } from "../../generate-post/prompts/index.js";
 import { VerifyContentAnnotation } from "../shared-state.js";
 import { GeneratePostAnnotation } from "../../generate-post/generate-post-state.js";
@@ -131,8 +131,8 @@ export async function verifyGitHubContentIsRelevant({
   dependenciesFileName,
   config,
 }: VerifyGitHubContentParams): Promise<boolean> {
-  const relevancyModel = new ChatAnthropic({
-    model: "claude-3-5-sonnet-20241022",
+  const relevancyModel = new ChatOpenAI({
+    model: "gpt-4o",
     temperature: 0,
   }).withStructuredOutput(RELEVANCY_SCHEMA, {
     name: "relevancy",

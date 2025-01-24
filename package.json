@@ -30,11 +30,13 @@
     "get:scheduled_runs": "yarn tsx scripts/get-scheduled-runs.ts",
     "get:used_links": "yarn tsx scripts/get-all-used-links.ts",
     "graph:delete:run_thread": "yarn tsx scripts/delete-run-thread.ts",
-    "langgraph:up": "langgraph up --watch --port 54367"
+    "langgraph:up": "langgraph up --watch --port 54367",
+    "langgraph:dev": "langgraph dev --port 54367"
   },
   "dependencies": {
     "@arcadeai/arcadejs": "^0.2.2",
     "@googleapis/youtube": "^20.0.0",
+    "@langchain/openai": "^0.3.17",
     "@langchain/anthropic": "^0.3.9",
     "@langchain/community": "^0.3.22",
     "@langchain/core": "^0.3.22",

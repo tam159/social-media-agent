@@ -1,6 +1,6 @@
 import { LangGraphRunnableConfig } from "@langchain/langgraph";
 import { GeneratePostAnnotation } from "../../generate-post-state.js";
-import { ChatAnthropic } from "@langchain/anthropic";
+import { ChatOpenAI} from "@langchain/openai";
 import { GENERATE_REPORT_PROMPT } from "./prompts.js";
 
 /**
@@ -30,8 +30,8 @@ export async function generateContentReport(
   state: typeof GeneratePostAnnotation.State,
   _config: LangGraphRunnableConfig,
 ): Promise<Partial<typeof GeneratePostAnnotation.State>> {
-  const reportModel = new ChatAnthropic({
-    model: "claude-3-5-sonnet-20241022",
+  const reportModel = new ChatOpenAI({
+    model: "gpt-4o",
     temperature: 0,
   });
 

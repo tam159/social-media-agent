@@ -6,7 +6,7 @@ import {
   StateGraph,
 } from "@langchain/langgraph";
 import { z } from "zod";
-import { ChatAnthropic } from "@langchain/anthropic";
+import { ChatOpenAI} from "@langchain/openai";
 import {
   getReflections,
   putReflections,
@@ -47,8 +47,8 @@ async function reflection(
   if (!config.store) {
     throw new Error("No store provided");
   }
-  const model = new ChatAnthropic({
-    model: "claude-3-5-sonnet-latest",
+  const model = new ChatOpenAI({
+    model: "gpt-4o",
     temperature: 0,
   });
 

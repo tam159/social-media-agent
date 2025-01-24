@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { GeneratePostAnnotation } from "../generate-post-state.js";
-import { ChatAnthropic } from "@langchain/anthropic";
+import { ChatOpenAI} from "@langchain/openai";
 import { toZonedTime } from "date-fns-tz";
 import { DateType } from "../../types.js";
 import { timezoneToUtc } from "../../../utils/date.js";
@@ -44,8 +44,8 @@ export async function updateScheduledDate(
   if (!state.userResponse) {
     throw new Error("No user response found");
   }
-  const model = new ChatAnthropic({
-    model: "claude-3-5-sonnet-20241022",
+  const model = new ChatOpenAI({
+    model: "gpt-4o",
     temperature: 0.5,
   }).withStructuredOutput(scheduleDateSchema, {
     name: "scheduleDate",

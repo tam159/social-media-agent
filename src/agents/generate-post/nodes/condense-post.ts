@@ -1,4 +1,4 @@
-import { ChatAnthropic } from "@langchain/anthropic";
+import { ChatOpenAI} from "@langchain/openai";
 import { GeneratePostAnnotation } from "../generate-post-state.js";
 import { parseGeneration } from "./geterate-post/utils.js";
 import { removeUrls } from "../../utils.js";
@@ -93,8 +93,8 @@ export async function condensePost(
     .replace("{originalPostLength}", originalPostLength)
     .replace("{reflectionsPrompt}", reflectionsPrompt);
 
-  const condensePostModel = new ChatAnthropic({
-    model: "claude-3-5-sonnet-20241022",
+  const condensePostModel = new ChatOpenAI({
+    model: "gpt-4o",
     temperature: 0.5,
   });
 
